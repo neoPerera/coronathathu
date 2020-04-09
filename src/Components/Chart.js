@@ -10,7 +10,7 @@ class Chart extends Component
         this.state = {
 
             chartData:{
-                labels: ['Total Local Cases', 'Total Recoverd',],
+                labels: ['Total Local Cases', 'Total Recovered',],
                 datasets:[
                   {
                     label:'Total Local Cases',
