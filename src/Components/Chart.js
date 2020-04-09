@@ -29,7 +29,7 @@ class Chart extends Component
               },
               pieData:
               {
-                labels: ['Local Active Cases', 'Total Recoverd','Deaths'],
+                labels: ['Local Active Cases', 'Total Recovered','Deaths'],
                 datasets:[
                   {
                     
