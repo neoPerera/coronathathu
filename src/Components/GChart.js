@@ -64,8 +64,8 @@ class GChart extends Component
                         0
                       ],
                       backgroundColor:[
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(0, 158, 113, 0.6)',
+                        'rgba(237, 12, 102, 0.6)',
                         'rgba(54, 162, 235, 0.6)'
                       ]
                     }
