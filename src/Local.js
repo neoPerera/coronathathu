@@ -3,16 +3,18 @@ import logo from './logo.svg';
 import './App.css';
 
 import { render } from 'react-dom';
+import Switch from '@material-ui/core/Switch';
 
 import Donut from 'react-svg-donuts';
 import Chart from './Components/Chart.js';
-
+import GChart from './Components/GChart.js';
 
 
 class Local extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+        checkedA:false,
         isLoaded: false,
         items: [],
       };
@@ -29,6 +31,14 @@ class Local extends React.Component {
           },
         )
     }
+    handleChange = (event) =>
+    {
+      this.setState(
+        {
+          checkedA: event.target.checked
+        }
+      );
+    }
 
    
   
@@ -37,17 +47,46 @@ class Local extends React.Component {
       if (!this.state.isLoaded) {
         return <div>Loading...</div>;
       } else {
-        return (
+        if(this.state.checkedA == false)
+        {
+          return (
           
-        <div className="container ">
-        
-
-            <p>Total Local Cases: {this.state.items.data.local_total_cases}</p>
-            <p>Total Recovered: {this.state.items.data.local_recovered}</p>
-            <Chart items={this.state.items} height='100' />
+            <div className="container ">
             
-        </div>
-        );
+    
+                <p>Total Local Cases: {this.state.items.data.local_total_cases}</p>
+                <p>Total Recovered: {this.state.items.data.local_recovered}</p>
+                
+                Local<Switch 
+                        checked = {this.state.checkedA}
+                        name="checkedA"
+                        color="default"
+                        onChange={this.handleChange}
+                  />Global
+                  <Chart items={this.state.items} height='100' />
+            </div>
+            );
+        }
+        else
+        {
+          return(
+            <div className="container ">
+            
+    
+                <p>Total Local Cases: {this.state.items.data.local_total_cases}</p>
+                <p>Total Recovered: {this.state.items.data.local_recovered}</p>
+                
+                Local<Switch 
+                        checked = {this.state.checkedA}
+                        name="checkedA"
+                        color="default"
+                        onChange={this.handleChange}
+                  />Global
+                  <GChart items={this.state.items} height='100' />
+            </div>
+          );
+        }
+
       }
     }
   }

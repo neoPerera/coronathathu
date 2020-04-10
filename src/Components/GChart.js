@@ -6,14 +6,14 @@ import '../Chart.css';
 
 
 
-class Chart extends Component
+class GChart extends Component
 {
     constructor(props)
     {
         super(props);
         
         this.state = {
-
+            checkedA:false,
             chartDataLocal:{
                 labels: ['Total Local Cases', 'Total Recovered',],
                   datasets:[
@@ -95,7 +95,14 @@ class Chart extends Component
               }
         
     }
-
+    handleChange = (event) =>
+  {
+    this.setState(
+      {
+        checkedA: event.target.checked
+      }
+    );
+  }
 
 
 
@@ -103,25 +110,25 @@ class Chart extends Component
     {
 
         return(
-            <div className="chart container">
-              <div>
+          <div className="chart container">
+            <div>
 
-              </div>
-               <Bar 
-                    data={this.state.chartDataLocal}
-                    options = {{}}
-
-               />
-
-               <Pie 
-                data={this.state.pieDataLocal}
-                options = {{}}
-               />
-               
-               
             </div>
-        );
-      
+             <Bar 
+                  data={this.state.chartDataGlobal}
+                  options = {{}}
+
+             />
+
+             <Pie 
+              data={this.state.pieDataGlobal}
+              options = {{}}
+             />
+             
+             
+          </div>
+      );
+
     };
 }
-export default Chart;
+export default GChart;
