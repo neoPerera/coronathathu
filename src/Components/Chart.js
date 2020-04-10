@@ -53,45 +53,7 @@ class Chart extends Component
                     }
                   ]
                 },
-                chartDataGlobal:{
-                  labels: ['Total Global Cases', 'Total Recovered',],
-                  datasets:[
-                    {
-                      label:'Total Global Cases',
-                      data:[
-                        props.items.data.global_total_cases,
-                        props.items.data.global_recovered,
-                        0
-                      ],
-                      backgroundColor:[
-                        'rgba(255, 99, 132, 0.6)',
-                        'rgba(54, 162, 235, 0.6)',
-                        'rgba(54, 162, 235, 0.6)'
-                      ]
-                    }
-                  ]
-                },
-                pieDataGlobal:
-                {
-                  labels: ['Global Active Cases', 'Total Recovered','Deaths'],
-                  datasets:[
-                    {
-                      
-                      data:[
-                        props.items.data.global_total_cases - props.items.data.global_recovered -  props.items.data.global_deaths,
-                        props.items.data.global_recovered,
-                        props.items.data.global_deaths
-                      ],
-                      backgroundColor:[
-                        'rgba(252, 3, 219,0.8)',
-                        'rgba(252, 190, 3,0.8)',
-                        'rgba(91, 91, 92,0.8)'
 
-
-                      ]
-                    }
-                  ]
-                }
               }
         
     }
@@ -103,7 +65,7 @@ class Chart extends Component
     {
 
         return(
-            <div className="chart container">
+            <div className="chart container-fluid">
               <div>
 
               </div>

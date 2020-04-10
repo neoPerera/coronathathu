@@ -51,7 +51,7 @@ class Local extends React.Component {
         {
           return (
           
-            <div className="container ">
+            <div className="container App">
               <div className="inits">
               <span class="badge badge-success">Local</span><Switch 
                         checked = {this.state.checkedA}
@@ -74,7 +74,7 @@ class Local extends React.Component {
         else
         {
           return(
-            <div className="container ">
+            <div className="container App">
             
               <div className="inits">
               <span class="badge badge-secondary">Local</span><Switch 
