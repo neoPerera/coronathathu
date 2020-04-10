@@ -52,17 +52,21 @@ class Local extends React.Component {
           return (
           
             <div className="container ">
-            
-    
-                <p>Total Local Cases: {this.state.items.data.local_total_cases}</p>
-                <p>Total Recovered: {this.state.items.data.local_recovered}</p>
-                
-                Local<Switch 
+              <div className="inits">
+              <span class="badge badge-success">Local</span><Switch 
                         checked = {this.state.checkedA}
                         name="checkedA"
                         color="default"
                         onChange={this.handleChange}
-                  />Global
+                  />
+                  <span class="badge badge-secondary">Global</span>
+                <p>Total Local Cases: {this.state.items.data.local_total_cases}</p>
+                <p>Total Recovered: {this.state.items.data.local_recovered}</p>
+              </div>
+    
+
+                
+
                   <Chart items={this.state.items} height='100' />
             </div>
             );
@@ -72,16 +76,21 @@ class Local extends React.Component {
           return(
             <div className="container ">
             
-    
-                <p>Total Local Cases: {this.state.items.data.local_total_cases}</p>
-                <p>Total Recovered: {this.state.items.data.local_recovered}</p>
-                
-                Local<Switch 
+              <div className="inits">
+              <span class="badge badge-secondary">Local</span><Switch 
                         checked = {this.state.checkedA}
                         name="checkedA"
                         color="default"
                         onChange={this.handleChange}
-                  />Global
+                  />
+                  <span class="badge badge-success">Global</span>
+                <p>Total Global Cases: {this.state.items.data.global_total_cases}</p>
+                <p>Total Recovered: {this.state.items.data.global_recovered}</p>
+                
+              </div>
+
+                
+
                   <GChart items={this.state.items} height='100' />
             </div>
           );
