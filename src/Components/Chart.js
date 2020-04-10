@@ -1,15 +1,20 @@
 import React, {Component} from 'react';
 import {Bar , Line , Pie} from 'react-chartjs-2';
+import Switch from '@material-ui/core/Switch';
+
 import '../Chart.css';
+
+
 
 class Chart extends Component
 {
     constructor(props)
     {
         super(props);
+        
         this.state = {
-
-            chartData:{
+            checkedA:false,
+            chartDataLocal:{
                 labels: ['Total Local Cases', 'Total Recovered',],
                 datasets:[
                   {
@@ -27,7 +32,7 @@ class Chart extends Component
                   }
                 ]
               },
-              pieData:
+              pieDataLocal:
               {
                 labels: ['Local Active Cases', 'Total Recovered','Deaths'],
                 datasets:[
@@ -47,26 +52,123 @@ class Chart extends Component
                     ]
                   }
                 ]
+              },
+              chartDataGlobal:{
+                labels: ['Total Global Cases', 'Total Recovered',],
+                datasets:[
+                  {
+                    label:'Total Global Cases',
+                    data:[
+                      props.items.data.global_total_cases,
+                      props.items.data.global_recovered,
+                      0
+                    ],
+                    backgroundColor:[
+                      'rgba(255, 99, 132, 0.6)',
+                      'rgba(54, 162, 235, 0.6)',
+                      'rgba(54, 162, 235, 0.6)'
+                    ]
+                  }
+                ]
+              },
+              pieDataGlobal:
+              {
+                labels: ['Global Active Cases', 'Total Recovered','Deaths'],
+                datasets:[
+                  {
+                    
+                    data:[
+                      props.items.data.global_total_cases - props.items.data.global_recovered -  props.items.data.global_deaths,
+                      props.items.data.global_recovered,
+                      props.items.data.global_deaths
+                    ],
+                    backgroundColor:[
+                      'rgba(252, 3, 219,0.8)',
+                      'rgba(252, 190, 3,0.8)',
+                      'rgba(91, 91, 92,0.8)'
+
+
+                    ]
+                  }
+                ]
               }
               }
         
     }
+    handleChange = (event) =>
+  {
+    this.setState(
+      {
+        checkedA: event.target.checked
+      }
+    );
+  }
+
+
+
     render()
     {
+      if(this.state.checkedA == true)
+      {
+        return(
+          <div className="chart container">
+            <div>
+            Local
+            <Switch 
+                  checked = {this.state.checkedA}
+                  name="checkedA"
+                  color="default"
+                  onChange={this.handleChange}
+                  />
+           
+            
+            Global
+            </div>
+             <Bar 
+                  data={this.state.chartDataGlobal}
+                  options = {{}}
+
+             />
+
+             <Pie 
+              data={this.state.pieDataGlobal}
+              options = {{}}
+             />
+             
+             
+          </div>
+      );
+      }
+      else if(this.state.checkedA == false){
         return(
             <div className="chart container">
+              <div>
+              Local
+              <Switch 
+                    checked = {this.state.checkedA}
+                    name="checkedA"
+                    color="default"
+                    onChange={this.handleChange}
+                    />
+             
+              
+              Global
+              </div>
                <Bar 
-                    data={this.state.chartData}
+                    data={this.state.chartDataLocal}
                     options = {{}}
 
                />
 
                <Pie 
-                data={this.state.pieData}
+                data={this.state.pieDataLocal}
                 options = {{}}
                />
+               
+               
             </div>
         );
+      }
     };
 }
 export default Chart;

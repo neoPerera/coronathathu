@@ -39,7 +39,7 @@ class Local extends React.Component {
       } else {
         return (
           
-        <div class="container ">
+        <div className="container ">
         
 
             <p>Total Local Cases: {this.state.items.data.local_total_cases}</p>
